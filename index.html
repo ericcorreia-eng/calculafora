@@ -1,0 +1,150 @@
+Aqui está uma calculadora de IMC completa usando **HTML, CSS e JavaScript**:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de IMC</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        width: 350px;
+        text-align: center;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: #4facfe;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #2b8cff;
+    }
+
+    #resultado {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Calculadora de IMC</h1>
+
+    <div class="input-group">
+        <label for="peso">Peso (kg)</label>
+        <input type="number" id="peso" placeholder="Ex: 70">
+    </div>
+
+    <div class="input-group">
+        <label for="altura">Altura (m)</label>
+        <input type="number" step="0.01" id="altura" placeholder="Ex: 1.75">
+    </div>
+
+    <button onclick="calcularIMC()">Calcular IMC</button>
+
+    <div id="resultado"></div>
+</div>
+
+<script>
+function calcularIMC() {
+    const peso = parseFloat(document.getElementById("peso").value);
+    const altura = parseFloat(document.getElementById("altura").value);
+    const resultado = document.getElementById("resultado");
+
+    if (!peso || !altura) {
+        resultado.innerHTML = "Preencha todos os campos!";
+        return;
+    }
+
+    const imc = peso / (altura * altura);
+    let classificacao = "";
+
+    if (imc < 18.5) {
+        classificacao = "Abaixo do peso";
+    } else if (imc < 24.9) {
+        classificacao = "Peso normal";
+    } else if (imc < 29.9) {
+        classificacao = "Sobrepeso";
+    } else if (imc < 34.9) {
+        classificacao = "Obesidade Grau I";
+    } else if (imc < 39.9) {
+        classificacao = "Obesidade Grau II";
+    } else {
+        classificacao = "Obesidade Grau III";
+    }
+
+    resultado.innerHTML = `
+        IMC: ${imc.toFixed(2)}<br>
+        Classificação: ${classificacao}
+    `;
+}
+</script>
+
+</body>
+</html>
+```
+
+**Tabela de classificação do IMC:**
+
+* Menor que 18,5 → Abaixo do peso
+* 18,5 a 24,9 → Peso normal
+* 25 a 29,9 → Sobrepeso
+* 30 a 34,9 → Obesidade Grau I
+* 35 a 39,9 → Obesidade Grau II
+* 40 ou mais → Obesidade Grau III
+
+Basta salvar o código em um arquivo `index.html` e abrir no navegador.
